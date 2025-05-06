@@ -111,11 +111,13 @@ export default function LandingPage() {
               <Menu className="h-8 w-8 text-blue-700" />
             )}
           </button>
-          <nav className="hidden lg:flex gap-6 text-lg font-semibold">
+          <nav className="hidden lg:flex gap-6 text-lg font-semibold items-center">
             <a href="#hero" onClick={(e) => handleLinkClick(e, "#hero")} className="hover:text-blue-700">Home</a>
             <a href="#sobre" onClick={(e) => handleLinkClick(e, "#sobre")} className="hover:text-blue-700">Sobre</a>
             <a href="#solucoes" onClick={(e) => handleLinkClick(e, "#solucoes")} className="hover:text-blue-700">Soluções</a>
             <a href="#contato" onClick={(e) => handleLinkClick(e, "#contato")} className="hover:text-blue-700">Contato</a>
+            <a href="#contato" onClick={(e) => handleLinkClick(e, "#contato")} className="bg-gradient-to-r from-blue-600 to-blue-800 text-white px-4 py-2 rounded-full shadow hover:brightness-110">Fale Conosco</a>
+            <a href="#cliente" onClick={(e) => handleLinkClick(e, "#cliente")} className="border border-blue-700 text-blue-700 px-4 py-2 rounded-full hover:bg-blue-700 hover:text-white">Já sou cliente</a>
           </nav>
         </div>
         {menuOpen && (
@@ -124,6 +126,8 @@ export default function LandingPage() {
             <a href="#sobre" onClick={(e) => handleLinkClick(e, "#sobre")} className="hover:text-blue-700">Sobre</a>
             <a href="#solucoes" onClick={(e) => handleLinkClick(e, "#solucoes")} className="hover:text-blue-700">Soluções</a>
             <a href="#contato" onClick={(e) => handleLinkClick(e, "#contato")} className="hover:text-blue-700">Contato</a>
+            <a href="#contato" onClick={(e) => handleLinkClick(e, "#contato")} className="bg-gradient-to-r from-blue-600 to-blue-800 text-white px-4 py-2 rounded-full shadow hover:brightness-110">Fale Conosco</a>
+            <a href="#cliente" onClick={(e) => handleLinkClick(e, "#cliente")} className="border border-blue-700 text-blue-700 px-4 py-2 rounded-full hover:bg-blue-700 hover:text-white">Já sou cliente</a>
           </div>
         )}
       </header>
