@@ -157,7 +157,8 @@ export default function LandingPage() {
       <section id="sobre" className="scroll-mt-32 py-20 px-8 bg-gray-50">
         <h2 className="text-3xl font-bold text-center mb-8 text-black">Sobre a MA Tecnologia</h2>
         <p className="max-w-3xl mx-auto text-center text-gray-700 text-lg">
-          A MA Tecnologia é uma empresa especializada no desenvolvimento de sistemas inteligentes para clínicas médicas, eventos e organizações. Com foco em inovação, eficiência e atendimento personalizado, oferecemos soluções que geram resultados concretos.
+        A MA Tecnologia é uma empresa especializada no desenvolvimento de soluções inovadoras para clínicas e hospitais. Nosso propósito é otimizar fluxos, automatizar processos e potencializar resultados por meio de sistemas inteligentes, intuitivos e sob medida.
+        Com foco em eficiência operacional, segurança da informação e atendimento personalizado, entregamos tecnologia que faz a diferença na rotina de quem cuida da saúde.
         </p>
       </section>
 
