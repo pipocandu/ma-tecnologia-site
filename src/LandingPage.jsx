@@ -1,27 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Stethoscope, Code, BarChart2, LifeBuoy, SlidersHorizontal, Menu, X } from "lucide-react";
+import { Stethoscope, Code, BarChart2, LifeBuoy, SlidersHorizontal } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 
 export default function LandingPage() {
-  useEffect(() => {
-    const links = document.querySelectorAll("a[href^='#']");
-    links.forEach((link) => {
-      const href = link.getAttribute("href");
-      if (href && href !== "#") {
-        link.addEventListener("click", (e) => {
-          e.preventDefault();
-          const target = document.querySelector(href);
-          if (target) {
-            target.scrollIntoView({ behavior: "smooth" });
-          }
-        });
-      }
-    });
-  }, []);
-
   const [currentHero, setCurrentHero] = useState(0);
-  const [menuOpen, setMenuOpen] = useState(false);
 
   const heroSlides = [
     {
@@ -79,45 +62,18 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen bg-blue-50 text-black">
       {/* Header */}
-      <header className="fixed top-0 left-0 w-full z-50 bg-white shadow-md">
-        <div className="max-w-7xl mx-auto flex items-center justify-between px-4 md:px-6 py-3">
-          <div className="flex items-center gap-6">
-            <img src="/logo-ma-tecnologia.png" alt="MA Tecnologia Logo" className="h-16 w-auto object-contain" />
-          </div>
-
-          {/* Mobile menu toggle */}
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="lg:hidden text-gray-800"
-          >
-            {menuOpen ? <X size={28} /> : <Menu size={28} />}
-          </button>
-
-          {/* Desktop Nav */}
-          <nav className="hidden lg:flex items-center gap-10 text-lg font-semibold">
-            <a href="#hero" className="text-black hover:text-white hover:bg-blue-700 px-4 py-2 rounded">Home</a>
-            <a href="#sobre" className="text-black hover:text-white hover:bg-blue-700 px-4 py-2 rounded">Sobre</a>
-            <a href="#solucoes" className="text-black hover:text-white hover:bg-blue-700 px-4 py-2 rounded">Soluções</a>
-            <a href="#contato" className="text-black hover:text-white hover:bg-blue-700 px-4 py-2 rounded">Contato</a>
-          </nav>
-
-          <div className="hidden lg:flex items-center gap-3">
-            <a href="#contato" className="bg-gradient-to-r from-blue-600 to-blue-800 text-white px-5 py-2 rounded-full shadow hover:brightness-110">Fale Conosco</a>
-            <a href="#cliente" className="bg-white border border-blue-700 text-blue-700 px-5 py-2 rounded-full hover:bg-blue-700 hover:text-white">Já sou cliente</a>
-          </div>
+      <header className="fixed top-0 left-0 w-full z-50 flex flex-col lg:flex-row items-center justify-between px-4 md:px-6 py-2 bg-white shadow-md gap-2">
+        <div className="flex items-center gap-6">
+          <img src="/logo-ma-tecnologia.png" alt="MA Tecnologia Logo" className="h-20 w-auto object-contain" />
         </div>
-
-        {/* Mobile Nav */}
-        {menuOpen && (
-          <nav className="lg:hidden bg-white px-4 pt-4 pb-6 shadow-md text-lg font-semibold space-y-4">
-            <a href="#hero" className="block text-black hover:text-blue-700">Home</a>
-            <a href="#sobre" className="block text-black hover:text-blue-700">Sobre</a>
-            <a href="#solucoes" className="block text-black hover:text-blue-700">Soluções</a>
-            <a href="#contato" className="block text-black hover:text-blue-700">Contato</a>
-            <a href="#contato" className="block bg-gradient-to-r from-blue-600 to-blue-800 text-white text-center px-4 py-2 rounded-full shadow hover:brightness-110">Fale Conosco</a>
-            <a href="#cliente" className="block text-center bg-white border border-blue-700 text-blue-700 px-4 py-2 rounded-full hover:bg-blue-700 hover:text-white">Já sou cliente</a>
-          </nav>
-        )}
+        <nav className="flex flex-wrap justify-center gap-4 text-lg font-semibold">
+          <a href="#hero" className="text-black hover:text-white hover:bg-blue-700 px-4 py-2 rounded">Home</a>
+          <a href="#sobre" className="text-black hover:text-white hover:bg-blue-700 px-4 py-2 rounded">Sobre</a>
+          <a href="#solucoes" className="text-black hover:text-white hover:bg-blue-700 px-4 py-2 rounded">Soluções</a>
+          <a href="#contato" className="text-black hover:text-white hover:bg-blue-700 px-4 py-2 rounded">Contato</a>
+          <a href="#contato" className="bg-gradient-to-r from-blue-600 to-blue-800 text-white px-5 py-2 rounded-full shadow hover:brightness-110">Fale Conosco</a>
+          <a href="#cliente" className="bg-white border border-blue-700 text-blue-700 px-5 py-2 rounded-full hover:bg-blue-700 hover:text-white">Já sou cliente</a>
+        </nav>
       </header>
 
       {/* Hero */}
