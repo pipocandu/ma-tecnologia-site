@@ -1,22 +1,33 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Stethoscope, Code, BarChart2, LifeBuoy, SlidersHorizontal } from "lucide-react";
+import {
+  Stethoscope,
+  Code,
+  BarChart2,
+  LifeBuoy,
+  SlidersHorizontal,
+  Menu,
+  X,
+} from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 
 export default function LandingPage() {
   const [currentHero, setCurrentHero] = useState(0);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const heroSlides = [
     {
       video: "/medico-fundo.mp4",
       titulo: "Excelência em Sistemas para sua Empresa",
-      descricao: "Desenvolvemos softwares que transformam a gestão de hospitais, clínicas e negócios com eficiência e inovação."
+      descricao:
+        "Desenvolvemos softwares que transformam a gestão de hospitais, clínicas e negócios com eficiência e inovação.",
     },
     {
       video: "/tecnologia-fundo.mp4",
       titulo: "Inteligência e automação para suas decisões mais importantes",
-      descricao: "Transformamos dados em decisões com painéis, relatórios e robôs sob medida para o seu hospital!"
-    }
+      descricao:
+        "Transformamos dados em decisões com painéis, relatórios e robôs sob medida para o seu hospital!",
+    },
   ];
 
   useEffect(() => {
@@ -26,55 +37,144 @@ export default function LandingPage() {
     return () => clearInterval(interval);
   }, []);
 
+  const handleLinkClick = (e, href) => {
+    e.preventDefault();
+    const target = document.querySelector(href);
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth" });
+    }
+    setMenuOpen(false);
+  };
+
   const solucoes = [
     {
       title: "Consultoria Hospitalar",
-      description: "Consultorias especializadas para otimizar processos clínicos e administrativos.",
-      icon: <Stethoscope className="w-10 h-10 text-blue-400 mb-4 group-hover:text-blue-700 transition-colors" />,
-      link: "/consultoria-hospitalar"
+      description:
+        "Consultorias especializadas para otimizar processos clínicos e administrativos.",
+      icon: (
+        <Stethoscope className="w-10 h-10 text-blue-400 mb-4 group-hover:text-blue-700 transition-colors" />
+      ),
+      link: "/consultoria-hospitalar",
     },
     {
       title: "Desenvolvimento de Software",
-      description: "Sistemas personalizados para gestão, controle e inovação da sua empresa.",
-      icon: <Code className="w-10 h-10 text-blue-400 mb-4 group-hover:text-blue-700 transition-colors" />,
-      link: "/desenvolvimento-software"
+      description:
+        "Sistemas personalizados para gestão, controle e inovação da sua empresa.",
+      icon: (
+        <Code className="w-10 h-10 text-blue-400 mb-4 group-hover:text-blue-700 transition-colors" />
+      ),
+      link: "/desenvolvimento-software",
     },
     {
       title: "Inteligência de Dados",
-      description: "Transforme dados em decisões estratégicas com nossas soluções de BI e análise.",
-      icon: <BarChart2 className="w-10 h-10 text-blue-400 mb-4 group-hover:text-blue-700 transition-colors" />,
-      link: "/inteligencia-dados"
+      description:
+        "Transforme dados em decisões estratégicas com nossas soluções de BI e análise.",
+      icon: (
+        <BarChart2 className="w-10 h-10 text-blue-400 mb-4 group-hover:text-blue-700 transition-colors" />
+      ),
+      link: "/inteligencia-dados",
     },
     {
       title: "Suporte Técnico",
-      description: "Equipe pronta para garantir a operação contínua e segura dos seus sistemas.",
-      icon: <LifeBuoy className="w-10 h-10 text-blue-400 mb-4 group-hover:text-blue-700 transition-colors" />,
-      link: "/suporte-tecnico"
+      description:
+        "Equipe pronta para garantir a operação contínua e segura dos seus sistemas.",
+      icon: (
+        <LifeBuoy className="w-10 h-10 text-blue-400 mb-4 group-hover:text-blue-700 transition-colors" />
+      ),
+      link: "/suporte-tecnico",
     },
     {
       title: "Soluções Sob Medida",
-      description: "Desenvolvimento de sistemas personalizados conforme sua demanda.",
-      icon: <SlidersHorizontal className="w-10 h-10 text-blue-400 mb-4 group-hover:text-blue-700 transition-colors" />,
-      link: "/solucoes-sob-medida"
-    }
+      description:
+        "Desenvolvimento de sistemas personalizados conforme sua demanda.",
+      icon: (
+        <SlidersHorizontal className="w-10 h-10 text-blue-400 mb-4 group-hover:text-blue-700 transition-colors" />
+      ),
+      link: "/solucoes-sob-medida",
+    },
   ];
 
   return (
     <div className="min-h-screen bg-blue-50 text-black">
       {/* Header */}
-      <header className="fixed top-0 left-0 w-full z-50 flex flex-col lg:flex-row items-center justify-between px-4 md:px-6 py-2 bg-white shadow-md gap-2">
-        <div className="flex items-center gap-6">
-          <img src="/logo-ma-tecnologia.png" alt="MA Tecnologia Logo" className="h-20 w-auto object-contain" />
+      <header className="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-4 py-2 bg-white shadow-md">
+        <div className="flex items-center gap-4">
+          <img
+            src="/logo-ma-tecnologia.png"
+            alt="MA Tecnologia Logo"
+            className="h-16 w-auto object-contain"
+          />
         </div>
-        <nav className="flex flex-wrap justify-center gap-4 text-lg font-semibold">
-          <a href="#hero" className="text-black hover:text-white hover:bg-blue-700 px-4 py-2 rounded">Home</a>
-          <a href="#sobre" className="text-black hover:text-white hover:bg-blue-700 px-4 py-2 rounded">Sobre</a>
-          <a href="#solucoes" className="text-black hover:text-white hover:bg-blue-700 px-4 py-2 rounded">Soluções</a>
-          <a href="#contato" className="text-black hover:text-white hover:bg-blue-700 px-4 py-2 rounded">Contato</a>
-          <a href="#contato" className="bg-gradient-to-r from-blue-600 to-blue-800 text-white px-5 py-2 rounded-full shadow hover:brightness-110">Fale Conosco</a>
-          <a href="#cliente" className="bg-white border border-blue-700 text-blue-700 px-5 py-2 rounded-full hover:bg-blue-700 hover:text-white">Já sou cliente</a>
+        <nav className="hidden lg:flex items-center gap-6 text-lg font-semibold">
+          {[
+            ["#hero", "Home"],
+            ["#sobre", "Sobre"],
+            ["#solucoes", "Soluções"],
+            ["#contato", "Contato"],
+          ].map(([href, label]) => (
+            <a
+              key={href}
+              href={href}
+              onClick={(e) => handleLinkClick(e, href)}
+              className="text-black hover:text-white hover:bg-blue-700 px-4 py-2 rounded"
+            >
+              {label}
+            </a>
+          ))}
+          <a
+            href="#contato"
+            onClick={(e) => handleLinkClick(e, "#contato")}
+            className="bg-gradient-to-r from-blue-600 to-blue-800 text-white px-5 py-2 rounded-full shadow hover:brightness-110"
+          >
+            Fale Conosco
+          </a>
+          <a
+            href="#cliente"
+            onClick={(e) => handleLinkClick(e, "#cliente")}
+            className="bg-white border border-blue-700 text-blue-700 px-5 py-2 rounded-full hover:bg-blue-700 hover:text-white"
+          >
+            Já sou cliente
+          </a>
         </nav>
+        <button className="lg:hidden" onClick={() => setMenuOpen(!menuOpen)}>
+          {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        </button>
       </header>
+
+      {/* Mobile Menu */}
+      {menuOpen && (
+        <div className="lg:hidden fixed top-20 left-0 w-full bg-white z-40 flex flex-col gap-4 px-6 py-4 shadow-md">
+          {[
+            ["#hero", "Home"],
+            ["#sobre", "Sobre"],
+            ["#solucoes", "Soluções"],
+            ["#contato", "Contato"],
+          ].map(([href, label]) => (
+            <a
+              key={href}
+              href={href}
+              onClick={(e) => handleLinkClick(e, href)}
+              className="text-black"
+            >
+              {label}
+            </a>
+          ))}
+          <a
+            href="#contato"
+            onClick={(e) => handleLinkClick(e, "#contato")}
+            className="bg-gradient-to-r from-blue-600 to-blue-800 text-white px-5 py-2 rounded-full shadow"
+          >
+            Fale Conosco
+          </a>
+          <a
+            href="#cliente"
+            onClick={(e) => handleLinkClick(e, "#cliente")}
+            className="bg-white border border-blue-700 text-blue-700 px-5 py-2 rounded-full"
+          >
+            Já sou cliente
+          </a>
+        </div>
+      )}
 
       {/* Hero */}
       <section id="hero" className="relative scroll-mt-32 h-[650px] flex items-center justify-center overflow-hidden">
@@ -89,7 +189,6 @@ export default function LandingPage() {
             className={`absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-1000 ${index === currentHero ? 'opacity-100 z-0' : 'opacity-0 z-0'}`}
           />
         ))}
-
         <div className="absolute z-10 bg-white bg-opacity-80 p-8 rounded-xl max-w-2xl text-center transition-all duration-700">
           <span className="inline-block bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded-full mb-4">
             Soluções Tecnológicas
@@ -100,19 +199,9 @@ export default function LandingPage() {
           <p className="text-lg text-gray-700 mb-6">
             {heroSlides[currentHero].descricao}
           </p>
-          <a href="#contato" className="bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-800">
+          <a href="#contato" onClick={(e) => handleLinkClick(e, "#contato")} className="bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-800">
             Solicitar Demonstração
           </a>
-        </div>
-
-        <div className="absolute bottom-4 right-4 z-20 flex gap-2">
-          {heroSlides.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentHero(index)}
-              className={`w-3 h-3 rounded-full border border-white ${index === currentHero ? 'bg-white' : 'bg-transparent'} transition-all duration-300`}
-            />
-          ))}
         </div>
       </section>
 
@@ -143,56 +232,6 @@ export default function LandingPage() {
           Com foco em eficiência operacional, segurança da informação e atendimento personalizado, entregamos tecnologia que faz a diferença na rotina de quem cuida da saúde.
         </p>
       </section>
-
-      {/* Contato */}
-      <section id="contato" className="scroll-mt-32 py-20 px-8">
-        <h2 className="text-3xl font-bold text-center mb-8 text-black">Entre em Contato</h2>
-        <form className="max-w-xl mx-auto space-y-6">
-          <input type="text" placeholder="Seu nome" className="w-full border px-4 py-3 rounded-xl" />
-          <input type="email" placeholder="Seu e-mail" className="w-full border px-4 py-3 rounded-xl" />
-          <textarea placeholder="Sua mensagem" rows="5" className="w-full border px-4 py-3 rounded-xl"></textarea>
-          <div className="flex justify-center">
-            <button type="submit" className="bg-blue-700 text-white px-6 py-3 rounded-xl font-medium hover:bg-blue-800">
-              Enviar Mensagem
-            </button>
-          </div>
-        </form>
-      </section>
-
-      {/* Clientes */}
-      <section className="py-20 px-8 bg-gradient-to-b from-blue-800 via-blue-700 to-blue-800">
-        <h2 className="text-3xl font-bold text-center mb-12 text-white">Nossos Clientes</h2>
-        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-10 items-center justify-center max-w-6xl mx-auto">
-          {[
-            { nome: "CMD Clínica Médica Diagnóstico", logo: "/logo-cmd.png" },
-            { nome: "INGOH", logo: "/logo-ingoh.png" },
-            { nome: "Banco de Olhos de Goiás", logo: "/logo-banco-olhos.png" },
-          ].map((cliente, index) => (
-            <div key={index} className="flex flex-col items-center gap-3">
-              <div className="h-48 w-48 md:h-52 md:w-52 bg-[#e6ecf0] rounded-full flex items-center justify-center p-6">
-                <img src={cliente.logo} alt={cliente.nome} className="h-full w-full object-contain grayscale hover:grayscale-0 transition duration-300" />
-              </div>
-              <p className="text-white text-sm text-center">{cliente.nome}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="py-6 text-center text-gray-500 text-sm">
-        © {new Date().getFullYear()} MA Tecnologia. Todos os direitos reservados.
-      </footer>
-
-      {/* WhatsApp Button */}
-      <a
-        href="https://wa.me/5562999999999?text=Olá%2C%20gostaria%20de%20saber%20mais%20sobre%20as%20soluções%20da%20MA%20Tecnologia!"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg flex items-center justify-center transition-transform hover:scale-110 z-50"
-        aria-label="Fale conosco pelo WhatsApp"
-      >
-        <FaWhatsapp className="w-7 h-7 text-white" />
-      </a>
     </div>
   );
 }
